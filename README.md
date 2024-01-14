@@ -5,7 +5,9 @@
 ```
 cd /var/www
 wget https://github.com/magefan/up2m/archive/refs/heads/master.zip
-unzip master.zip up2m
+unzip master.zip
+mv up2m-main/ up2m
+rm master.zip
 cd up2m
 cp conf.cfg_sample conf.cfg
 gedit conf.cfg
