@@ -63,7 +63,7 @@ echo "Installing Magento 2..." >&2
 #php ${WWW_DIR}/${DB_NAME}-root/bin/magento setup:install --admin-firstname=root --admin-lastname=root --admin-email=root@test.com --admin-user=root --admin-password=root123 --db-password=$DB_PASSWORD --db-host=localhost --db-name=${DB_NAME} --db-user=$DB_USER --base-url="http://127.0.0.1/${DB_NAME}/" --backend-frontname=admin --db-prefix=mym2 --elasticsearch-host=127.0.0.1
 php ${WWW_DIR}/${DB_NAME}-root/bin/magento setup:install --admin-firstname=root --admin-lastname=root --admin-email=root@test.com --admin-user=root --admin-password=root123 --db-password=$DB_PASSWORD --db-host=localhost --db-name=${DB_NAME} --db-user=$DB_USER --base-url="http://127.0.0.1/${DB_NAME}/" --backend-frontname=admin 
 
-ln -s ${WWW_DIR}/${DB_NAME}-root/ ${WWW_DIR}/${DB_NAME}
+ln -s ${WWW_DIR}/${DB_NAME}-root/pub/ ${WWW_DIR}/${DB_NAME}
 
 
 php ${WWW_DIR}/${DB_NAME}-root/bin/magento sampledata:deploy
