@@ -1,8 +1,8 @@
 #!/bin/bash
 if [ -z "$1" ]
 then
-	echo -e "Instance name is missing. Try to run:\n $0 newmagento2";
-	exit;
+    echo -e "Instance name is missing. Try to run:\n $0 newmagento2";
+    exit;
 fi
 
 echo "Reading config..." >&2
@@ -16,7 +16,13 @@ if [ ! -d "$MAGENTO_SOURCE_CODE" ]; then
     echo "Downloading Magento $1 ..."
     
     if [ ! -d "source" ]; then
-    	mkdir source
+        mkdir source
+    fi
+
+    if [ ! -f "~/.config/composer/auth.json" ]; then
+        # Copy the source file to the destination directory
+        cp auth.json ~/.config/composer/auth.json
+        echo "Copy auth.json to ~/.config/composer/auth.json"
     fi
 
     cd source
@@ -35,15 +41,15 @@ echo "${WWW_DIR}/${DB_NAME}-root"
 if [ -d "${WWW_DIR}/${DB_NAME}-root" ]; then
     DB_NAME="m2_${VERSION_WITHOUT_DOTS}v"
     if [ -d "${WWW_DIR}/${DB_NAME}2-root" ]; then
-		version_suffix=3
-		while [ -d "${WWW_DIR}/${DB_NAME}${version_suffix}-root" ]; do
-		    ((version_suffix++))
-		done
+        version_suffix=3
+        while [ -d "${WWW_DIR}/${DB_NAME}${version_suffix}-root" ]; do
+            ((version_suffix++))
+        done
 
-		DB_NAME="m2_${VERSION_WITHOUT_DOTS}v${version_suffix}"
-	else
-		DB_NAME="m2_${VERSION_WITHOUT_DOTS}v2"
-	fi  
+        DB_NAME="m2_${VERSION_WITHOUT_DOTS}v${version_suffix}"
+    else
+        DB_NAME="m2_${VERSION_WITHOUT_DOTS}v2"
+    fi  
 fi
 
 
