@@ -1,5 +1,7 @@
 # Tool For Installing Magento 2 on the Local Ubuntu Instance
 
+## Requirements
+PHP, Composer, MySQL, etc. according to Magento 2 system requirements
 
 ## Installation 
 ```
